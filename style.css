@@ -2225,9 +2225,8 @@ section {
     }
 
 }
-
 /* =========================================================
-   SERVICE LOCATIONS
+   13. SERVICE LOCATIONS
 ========================================================= */
 
 .locations-section {
@@ -2281,6 +2280,17 @@ section {
     color: var(--primary);
 }
 
+.contact-detail-multi {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media (max-width: 900px) {
     .locations-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -2297,10 +2307,4 @@ section {
         padding: 16px 14px;
         font-size: 14px;
     }
-}
-.contact-detail-multi {
-    display: flex;
-    flex-direction: column;
-
-    gap: 4px;
 }
