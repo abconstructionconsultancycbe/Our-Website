@@ -80,8 +80,20 @@ img {
 
     --border: #dcebf4;
 
+    /* Warm accent — used sparingly for eyebrow labels, highlights
+       and a few interactive details, so the palette reads as
+       "navy + gold" rather than a single flat blue. */
+    --accent: #d99a3d;
+
+    --accent-dark: #b87f28;
+
+    --accent-light: #fbf1e1;
+
     --shadow:
         0 15px 40px rgba(20, 70, 100, 0.10);
+
+    --shadow-lg:
+        0 25px 60px rgba(13, 40, 65, 0.16);
 
 }
 
@@ -496,7 +508,7 @@ section {
 
     margin-bottom: 12px;
 
-    color: var(--primary-dark);
+    color: var(--accent-dark);
 
     font-size: 12px;
 
@@ -659,7 +671,7 @@ section {
 
 
 /* =========================================================
-   7. BUILDING DOCTOR
+   7. CONSULTANCY APPROACH
 ========================================================= */
 
 .building-doctor {
@@ -772,7 +784,7 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(4, 1fr);
 
     gap: 22px;
 }
@@ -780,15 +792,15 @@ section {
 .service-card {
     position: relative;
 
-    padding: 32px;
+    padding: 32px 28px;
 
     border: 1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius: 14px;
 
     background: white;
 
-    transition: 0.3s ease;
+    transition: 0.35s ease;
 
     overflow: hidden;
 }
@@ -804,19 +816,21 @@ section {
     width: 100%;
     height: 3px;
 
-    background: var(--primary);
+    background: linear-gradient(90deg, var(--accent), var(--primary));
 
     transform: scaleX(0);
 
     transform-origin: left;
 
-    transition: 0.3s ease;
+    transition: 0.35s ease;
 }
 
 .service-card:hover {
     transform: translateY(-7px);
 
-    box-shadow: var(--shadow);
+    border-color: transparent;
+
+    box-shadow: var(--shadow-lg);
 }
 
 .service-card:hover::before {
@@ -826,12 +840,12 @@ section {
 .service-number {
     position: absolute;
 
-    top: 20px;
-    right: 22px;
+    top: 22px;
+    right: 24px;
 
-    color: #dceef7;
+    color: var(--border);
 
-    font-size: 32px;
+    font-size: 30px;
 
     font-weight: 800;
 }
@@ -848,11 +862,21 @@ section {
 
     border-radius: 12px;
 
-    background: var(--primary-light);
+    background: var(--secondary);
 
-    color: var(--primary-dark);
+    color: var(--accent);
 
     font-size: 21px;
+
+    transition: 0.35s ease;
+}
+
+.service-card:hover .service-icon {
+    background: var(--accent);
+
+    color: white;
+
+    transform: scale(1.06);
 }
 
 .service-card h3 {
@@ -864,9 +888,7 @@ section {
 }
 
 .service-card p {
-    min-height: 75px;
-
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 
     color: var(--text);
 
@@ -880,7 +902,7 @@ section {
 
     gap: 8px;
 
-    color: var(--primary-dark);
+    color: var(--accent-dark);
 
     font-size: 13px;
 
@@ -1017,15 +1039,15 @@ section {
 }
 
 .process-grid {
-    display: grid;
+    display: flex;
 
-    grid-template-columns:
-        repeat(6, 1fr);
-
-    align-items: start;
+    align-items: flex-start;
 }
 
 .process-step {
+    flex: 1 1 0;
+    min-width: 0;
+
     text-align: center;
 
     padding: 0 10px;
@@ -1073,11 +1095,14 @@ section {
 }
 
 .process-line {
-    height: 1px;
+    flex: 0 1 48px;
+    align-self: flex-start;
 
-    background: var(--border);
+    height: 2px;
 
     margin-top: 24px;
+
+    background: var(--border);
 }
 
 
@@ -1624,9 +1649,13 @@ section {
     }
 
     .process-grid {
-        grid-template-columns: repeat(3, 1fr);
+        flex-wrap: wrap;
 
         gap: 35px;
+    }
+
+    .process-step {
+        flex: 1 1 calc(33.333% - 24px);
     }
 
     .process-line {
@@ -1770,7 +1799,7 @@ section {
     }
 
 
-    /* Building Doctor */
+    /* Consultancy Approach */
 
     .doctor-image {
         min-height: 400px;
@@ -1798,7 +1827,7 @@ section {
     /* Process */
 
     .process-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
 
         gap: 30px;
     }
@@ -1890,210 +1919,6 @@ section {
 
         right: 18px;
         bottom: 18px;
-    }
-
-}
-
-/* =========================
-   SERVICES SECTION
-========================= */
-
-.services-section {
-    padding: 110px 0;
-
-    background: #ffffff;
-}
-
-
-/* SECTION HEADING */
-
-.section-heading {
-    max-width: 700px;
-
-    margin: 0 auto 60px;
-
-    text-align: center;
-}
-
-.section-label {
-    color: #c58b2a;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 15px;
-}
-
-.section-heading h2 {
-    font-size: 42px;
-    line-height: 1.2;
-
-    color: #172033;
-
-    margin-bottom: 20px;
-}
-
-.section-heading h2 span {
-    display: block;
-
-    color: #c58b2a;
-}
-
-.section-heading > p:last-child {
-    font-size: 16px;
-    line-height: 1.7;
-
-    color: #6b7280;
-}
-
-
-/* SERVICES GRID */
-
-.services-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 20px;
-}
-
-
-/* SERVICE CARD */
-
-.service-card {
-    position: relative;
-
-    padding: 30px 25px;
-
-    background: #f8fafc;
-
-    border: 1px solid #e7ebf0;
-
-    border-radius: 8px;
-
-    min-height: 330px;
-
-    transition: all 0.3s ease;
-
-    overflow: hidden;
-}
-
-.service-card:hover {
-    transform: translateY(-8px);
-
-    background: #ffffff;
-
-    border-color: #c58b2a;
-
-    box-shadow:
-        0 20px 45px rgba(23, 32, 51, 0.10);
-}
-
-
-/* SERVICE NUMBER */
-
-.service-number {
-    position: absolute;
-
-    top: 18px;
-    right: 20px;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    color: #cfd5dd;
-}
-
-
-/* SERVICE ICON */
-
-.service-icon {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #172033;
-
-    border-radius: 7px;
-
-    font-size: 24px;
-
-    margin-bottom: 25px;
-}
-
-
-/* SERVICE TITLE */
-
-.service-card h3 {
-    font-size: 19px;
-
-    line-height: 1.3;
-
-    color: #172033;
-
-    margin-bottom: 15px;
-}
-
-
-/* SERVICE DESCRIPTION */
-
-.service-card p {
-    font-size: 14px;
-
-    line-height: 1.7;
-
-    color: #6b7280;
-
-    margin-bottom: 20px;
-}
-
-
-/* LEARN MORE */
-
-.service-card a {
-    font-size: 13px;
-
-    font-weight: 800;
-
-    color: #c58b2a;
-}
-
-.service-card a:hover {
-    color: #172033;
-}
-
-
-/* =========================
-   SERVICES RESPONSIVE
-========================= */
-
-@media (max-width: 1000px) {
-
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .services-section {
-        padding: 80px 0;
-    }
-
-    .section-heading h2 {
-        font-size: 32px;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
     }
 
 }
@@ -2399,4 +2224,83 @@ section {
         width: 220px;
     }
 
+}
+
+/* =========================================================
+   SERVICE LOCATIONS
+========================================================= */
+
+.locations-section {
+    padding: 110px 0;
+    background: #ffffff;
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 45px;
+}
+
+.location-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 18px;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--dark);
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.location-card i {
+    color: var(--primary);
+    font-size: 17px;
+}
+
+.locations-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+    color: var(--light-text);
+    font-size: 14px;
+    text-align: center;
+}
+
+.locations-note i {
+    color: var(--primary);
+}
+
+@media (max-width: 900px) {
+    .locations-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .location-card {
+        padding: 16px 14px;
+        font-size: 14px;
+    }
+}
+.contact-detail-multi {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
 }
